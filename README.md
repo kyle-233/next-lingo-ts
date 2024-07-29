@@ -20,6 +20,61 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Prettier
+
+- [Prettier Documentation](https://prettier.io/docs/en/install) - learn about Prettier.
+
+```bash
+# install
+npm install --save-dev --save-exact prettier eslint-config-prettier
+# add `prettier` on `.eslintrc.json`
+echo '{"extends": ["next/core-web-vitals", "prettier"]}' > .eslintrc.json
+# add rules on `.prettierrc.json`
+echo '{}' > .prettierrc.json
+```
+
+And then add some local config in `.vscode/settings.json` file
+
+```js
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
+```
+
+## commitlint
+
+- [Commitlint Documentation](https://commitlint.js.org/) - Lint commit messages.
+
+```bash
+# install
+npm install --save-dev --save-exact @commitlint/config-conventional @commitlint/cli
+# configure commitlint to use conventional config
+echo '{ "extends": ["@commitlint/config-conventional"] }' > .commitlintrc.json
+# add npm script
+npm pkg set scripts.commitlint="commitlint --edit --config .commitlintrc.json -e -V"
+```
+
+## husky
+
+- [Husky Documentation](https://typicode.github.io/husky/) - Husky enhances your commits and more 🐶 woof!
+
+```bash
+# install
+npm install --save-dev --save-exact husky
+# initial
+npx husky init
+
+# Add commit message linting to commit-msg hook
+echo "npx --no-install commitlint --edit \$1" > .husky/commit-msg
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
